@@ -1,19 +1,19 @@
 # import socket dan sys
-
+import socket, sys
 # fungsi utama
 def main():
     # buat socket bertipe TCP
-
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     # tentukan IP server target
+    ip = "127.0.0.1"
     
-    
-    # tentukan por server
-    
+    # tentukan port server
+    port = 12345
 
     # lakukan koneksi ke server
     try:
-    
+        sock.connect((ip, port))
     except:
         # print error
         print("Koneksi error")
@@ -27,7 +27,7 @@ def main():
     # selama pesan bukan "quit", lakukan loop forever
     while message != 'quit':
         # kirimkan pesan yang ditulis ke server
-    
+        sock.send(message.encode())
         
         # menu (user interface)
         message = input(" -> ")
